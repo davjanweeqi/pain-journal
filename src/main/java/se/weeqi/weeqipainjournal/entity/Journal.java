@@ -1,13 +1,30 @@
 package se.weeqi.weeqipainjournal.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "journal")
+import javax.validation.constraints.NotBlank;
+import java.util.Date;
+
+@Document(collection = "journal")
+@JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class Journal {
+    @Id
+    private Long id;
+    private int pain;
+    @NotBlank
+    private String owner;
+    private String notes;
+    private Date createdAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public Long getId() {
         return id;
@@ -48,11 +65,8 @@ public class Journal {
                 ", pain=" + pain + '\'' +
                 ", owner=" + owner + '\'' +
                 ", notes=" + notes + '\'' +
+                ", createdAt=" + createdAt + '\'' +
                 "}";
     }
-
-    private @Id @GeneratedValue Long id;
-    private int pain;
-    private String owner;
-    private String notes;
 }
+
