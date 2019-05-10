@@ -12,7 +12,7 @@ class ListJournalsComponent extends Component {
     }
 
     refreshJournal() {
-        JournalDataService.retreiveCourse(1).then(response => console.log(response))
+        JournalDataService.retreiveCourse().then(response => console.log(response))
     }
 
     render() {

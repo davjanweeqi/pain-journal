@@ -9,18 +9,18 @@ import se.weeqi.weeqipainjournal.repository.JournalRepository;
 import javax.validation.Valid;
 
 @RestController
-@CrossOrigin("*")
+//@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
 public class JournalController {
 
     @Autowired
     private JournalRepository repository;
 
-    @GetMapping("/journal/{id}")
-    public ResponseEntity<Journal> getJournal(@PathVariable("id") Long id) {
-        return repository.findById(id).map(journal -> ResponseEntity.ok().body(journal)).orElse(ResponseEntity.notFound().build());
+    @GetMapping("/getJournal")
+    public ResponseEntity<Journal> getJournal() {
+        return repository.findById(Integer.toUnsignedLong(1)).map(journal -> ResponseEntity.ok().body(journal)).orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/journal")
+    @PutMapping("/putJournal")
     public Journal createJournal(@Valid @RequestBody Journal journal) {
         return repository.save(journal);
     }

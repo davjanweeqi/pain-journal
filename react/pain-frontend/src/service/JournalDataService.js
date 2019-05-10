@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const ID_API_URL = 'http://localhost:8080/journal';
+const ID_API_URL = 'http://localhost:8080/journal/getJournal';
 
 class JournalDataService {
     //retreiveCourse(id) {
