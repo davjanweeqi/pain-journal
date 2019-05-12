@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import se.weeqi.weeqipainjournal.entity.Journal;
 
 @Repository
-public interface JournalRepository extends MongoRepository<Journal, Long> {
+public interface JournalRepository extends MongoRepository<Journal, Integer> {
 }

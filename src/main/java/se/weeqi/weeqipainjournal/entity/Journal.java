@@ -11,7 +11,7 @@ import java.util.Date;
 @JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class Journal {
     @Id
-    private Long id;
+    private int id;
     private int pain;
     @NotBlank
     private String owner;
@@ -26,11 +26,11 @@ public class Journal {
         this.createdAt = createdAt;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
