@@ -45,16 +45,14 @@ class ListJournalsComponent extends Component {
 
     render(props) {
         return <div className="container">
-            <h3>All Courses</h3>
             <div className="container">
-                <table className="table">
+                <table className="ui celled table">
                     <thead>
                     <tr>
                         <th>Id</th>
                         <th>Pain Level</th>
                         <th>Notes</th>
                         <th>Owner</th>
-                        <th>Created At</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -66,8 +64,7 @@ class ListJournalsComponent extends Component {
                                 <td>{journal.pain}</td>
                                 <td>{journal.notes}</td>
                                 <td>{journal.owner}</td>
-                                <td>{journal.createdAt}</td>
-                                <td><button className="btn btn-danger" onClick={() => this.deleteJournalById(journal.id)}>DeleteJournalTest</button></td>
+                                <td><button className="ui negative button" onClick={() => this.deleteJournalById(journal.id)}>DeleteJournalTest</button></td>
                             </tr>
                         )
                     }

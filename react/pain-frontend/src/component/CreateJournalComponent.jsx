@@ -42,7 +42,7 @@ class CreateJournalComponent extends Component {
             <h3>Create New Journal</h3>
             <div className="container">
 
-                <form onSubmit={() => this.createJournal(id, pain, owner, notes)}>
+                <form className="ui form" onSubmit={() => this.createJournal(id, pain, owner, notes)}>
                     <label>ID:</label>
                     <input type="text" name="id" value={id} onChange={this.onChange}/>
                     <label>Pain Level 1-10:</label>
@@ -51,7 +51,7 @@ class CreateJournalComponent extends Component {
                     <input type="text" name="owner" value={owner} onChange={this.onChange}/>
                     <label>Notes</label>
                     <input type="text" name="notes" value={notes} onChange={this.onChange}/>
-                    <input type="submit" value="Submit" className="btn btn-success" />
+                    <input type="submit" value="Submit" className="ui positive button" />
                 </form>
             </div>
         </div>

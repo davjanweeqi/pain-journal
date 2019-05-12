@@ -27,18 +27,20 @@ class JournalApp extends Component {
         let button;
 
         if(creatingJournal) {
-            view = <CreateJournalComponent/>
-            button = <button onClick={() => this.handleViewAllJournal()}>View All Journals</button>
+            view = <CreateJournalComponent/>;
+            button = <button className={"ui primary button"} onClick={() => this.handleViewAllJournal()}>View All Journals</button>
         } else {
-            view = <ListJournalsComponent />
-            button = <button onClick={() => this.handleCreateClick()}>Create New Journal</button>
+            view = <ListJournalsComponent />;
+            button = <button className={"ui primary button"} onClick={() => this.handleCreateClick()}>Create New Journal</button>
         }
 
         return (
             <>
-                <h1>Journal Application</h1>
+                <h1 className={"ui header"}>Journal Application</h1>
                 <div>
                     {view}
+                </div>
+                <div>
                     {button}
                 </div>
             </>
