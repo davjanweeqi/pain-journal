@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import 'react-day-picker/lib/style.css'
 
 class CreateJournalComponent extends Component {
 
@@ -10,15 +12,16 @@ class CreateJournalComponent extends Component {
             id: '',
             pain: '',
             owner: '',
-            notes: ''
+            notes: '',
+            date: undefined
         };
     }
 
-    createJournal(id, pain, owner, notes) {
+    createJournal(id, pain, owner, notes, date) {
 
-        console.log(id + ' ' + pain + '');
+        console.log(id + ' ' + pain + '' + date + '');
 
-        axios.put('http://localhost:8080/journal/createJournal/' + id + '/'  + pain + '/' + owner + '/' + notes)
+        axios.put('http://localhost:8080/journal/createJournal/' + id + '/'  + pain + '/' + owner + '/' + notes + '/' + date)
             .then(function (response) {
                 console.log(response);
                 console.log(response.status);
@@ -34,16 +37,21 @@ class CreateJournalComponent extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
+    handleDayChange(day) {
+        this.setState({ day: day.toLocaleDateString()})
+    }
+
     render() {
 
-        const { id, pain, owner, notes} = this.state;
+        const { id, pain, owner, notes, day} = this.state;
 
         return <div className="container">
+
             <h3>Create New Journal</h3>
             <div className="container">
-
-                <form className="ui form" onSubmit={() => this.createJournal(id, pain, owner, notes)}>
-                    <label>ID:</label>
+                <DayPickerInput onDayChange={(newDate) => this.handleDayChange(newDate)}/>
+                <form className="ui form" onSubmit={() => this.createJournal(id, pain, owner, notes, day)}>
+                    <label>ID: </label>
                     <input type="text" name="id" value={id} onChange={this.onChange}/>
                     <label>Pain Level 1-10:</label>
                     <input type="text" name="pain" value={pain} onChange={this.onChange}/>
