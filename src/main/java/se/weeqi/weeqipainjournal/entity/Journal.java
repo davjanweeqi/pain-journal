@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Document(collection = "journal")
@@ -16,13 +17,13 @@ public class Journal {
     @NotBlank
     private String owner;
     private String notes;
-    private Date createdAt;
+    private LocalDate createdAt;
 
-    public Date getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
